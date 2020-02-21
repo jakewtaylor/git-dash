@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/git-dash/static/css/main.636bd381.chunk.css",
-    "main.js": "/git-dash/static/js/main.b8bf9f32.chunk.js",
-    "main.js.map": "/git-dash/static/js/main.b8bf9f32.chunk.js.map",
-    "runtime-main.js": "/git-dash/static/js/runtime-main.01556bde.js",
-    "runtime-main.js.map": "/git-dash/static/js/runtime-main.01556bde.js.map",
-    "static/js/2.4c1bdcb5.chunk.js": "/git-dash/static/js/2.4c1bdcb5.chunk.js",
-    "static/js/2.4c1bdcb5.chunk.js.map": "/git-dash/static/js/2.4c1bdcb5.chunk.js.map",
-    "index.html": "/git-dash/index.html",
-    "precache-manifest.fdf4b559c4bf55ffef06d795dd75cace.js": "/git-dash/precache-manifest.fdf4b559c4bf55ffef06d795dd75cace.js",
-    "service-worker.js": "/git-dash/service-worker.js",
-    "static/css/main.636bd381.chunk.css.map": "/git-dash/static/css/main.636bd381.chunk.css.map",
-    "static/js/2.4c1bdcb5.chunk.js.LICENSE.txt": "/git-dash/static/js/2.4c1bdcb5.chunk.js.LICENSE.txt"
+    "main.css": "./static/css/main.636bd381.chunk.css",
+    "main.js": "./static/js/main.b8bf9f32.chunk.js",
+    "main.js.map": "./static/js/main.b8bf9f32.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.e641c39f.js",
+    "runtime-main.js.map": "./static/js/runtime-main.e641c39f.js.map",
+    "static/js/2.4c1bdcb5.chunk.js": "./static/js/2.4c1bdcb5.chunk.js",
+    "static/js/2.4c1bdcb5.chunk.js.map": "./static/js/2.4c1bdcb5.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.cd2e7be30c91a4791765d8aafc6d93ee.js": "./precache-manifest.cd2e7be30c91a4791765d8aafc6d93ee.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/main.636bd381.chunk.css.map": "./static/css/main.636bd381.chunk.css.map",
+    "static/js/2.4c1bdcb5.chunk.js.LICENSE.txt": "./static/js/2.4c1bdcb5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.01556bde.js",
+    "static/js/runtime-main.e641c39f.js",
     "static/js/2.4c1bdcb5.chunk.js",
     "static/css/main.636bd381.chunk.css",
     "static/js/main.b8bf9f32.chunk.js"
