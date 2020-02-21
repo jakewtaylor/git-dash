@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Apollo } from './Apollo';
+// import { Test } from './Test';
+import { Layout } from './components/Layout';
+import { RepoPicker } from './components/RepoPicker';
+import { ConfigController } from './components/ConfigController/ConfigController';
+import { TokenGate } from './components/TokenGate';
 
-function App() {
+const token = '514efa1c3afb28538a89d74a2d19ce9ef789baea';
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigController>
+      <Layout>
+        <TokenGate>
+          <Apollo token={token}>
+            <RepoPicker />
+            {/* <Test /> */}
+          </Apollo>
+        </TokenGate>
+      </Layout>
+    </ConfigController>
   );
-}
-
-export default App;
+};
