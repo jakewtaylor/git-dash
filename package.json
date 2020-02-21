@@ -1,5 +1,6 @@
 {
   "name": "git-dash",
+  "homepage": "https://jakewtaylor.github.io/git-dash/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +22,9 @@
     "eject": "react-scripts eject",
     "build:styles": "postcss tailwind-entry.css -o src/styles.css",
     "prebuild": "yarn build:styles",
-    "prestart": "yarn build:styles"
+    "prestart": "yarn build:styles",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
   }
