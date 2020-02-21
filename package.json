@@ -1,6 +1,6 @@
 {
   "name": "git-dash",
-  "homepage": "https://jakewtaylor.github.io/git-dash/",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
