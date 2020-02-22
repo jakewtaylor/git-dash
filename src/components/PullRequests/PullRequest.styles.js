@@ -7,12 +7,24 @@ export const useStyles = () =>
         border-b border-gray-300
     `,
 
+    preTitle: `
+        flex flex-row items-center mb-2
+    `,
+
+    owner: `
+        flex flex-row items-center
+    `,
+
+    ownerAvatar: `
+        w-6 h-6 rounded-full shadow mr-1
+    `,
+
     repo: `
-        text-base text-gray-800
+        text-base text-gray-800 leading-none mr-2
     `,
 
     titleBar: `
-        flex flex-row justify-between items-center mb-2
+        flex flex-row justify-between items-center mb-1
     `,
 
     title: `
@@ -33,11 +45,15 @@ export const useStyles = () =>
     `,
 
     authorName: `
-        text-sm leading-none text-gray-900
+        text-sm leading-none text-gray-900 whitespace-no-wrap
+    `,
+
+    timestamps: `
+        text-sm leading-none text-gray-700
     `,
 
     reviewers: `
-        flex flex-row
+        flex flex-row mt-3
     `,
 
     review: `
