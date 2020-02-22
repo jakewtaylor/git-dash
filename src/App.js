@@ -5,6 +5,7 @@ import { Layout } from './components/Layout';
 import { RepoPicker } from './components/RepoPicker';
 import { ConfigController } from './components/ConfigController/ConfigController';
 import { TokenGate } from './components/TokenGate';
+import { PullRequests } from './components/PullRequests/PullRequests';
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
           <Apollo>
             <RepoPicker />
             {/* <Test /> */}
+            <PullRequests />
           </Apollo>
         </TokenGate>
       </Layout>
