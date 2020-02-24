@@ -6,8 +6,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 const GET_PULL_REQUESTS = gql`
-  query PullRequests($query: String!) {
-    search(query: $query, type: ISSUE, last: 100) {
+  query PullRequests($query: String!, $limit: Int!) {
+    search(query: $query, type: ISSUE, last: $limit) {
       nodes {
         ... on PullRequest {
           id
@@ -52,11 +52,12 @@ export const PullRequests = () => {
   const { selectedRepos } = useConfig();
   const styles = useStyles();
 
+  const limit = selectedRepos.repos.length < 1 ? 10 : 100;
   const query =
     'is:pr is:open ' +
     selectedRepos.repos.map(r => `repo:${r.nameWithOwner}`).join(' ');
   const { loading, error, data } = useQuery(GET_PULL_REQUESTS, {
-    variables: { query },
+    variables: { query, limit },
     pollInterval: 30000,
   });
 
