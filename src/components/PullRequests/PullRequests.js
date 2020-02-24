@@ -57,6 +57,7 @@ export const PullRequests = () => {
     selectedRepos.repos.map(r => `repo:${r.nameWithOwner}`).join(' ');
   const { loading, error, data } = useQuery(GET_PULL_REQUESTS, {
     variables: { query },
+    pollInterval: 30000,
   });
 
   return loading ? (
