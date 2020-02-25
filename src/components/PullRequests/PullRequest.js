@@ -29,7 +29,13 @@ export const PullRequest = ({ pullRequest }) => {
             <Labels labels={pullRequest.labels.nodes} />
           </div>
           <p className={styles.title}>
-            <a href={pullRequest.permalink}>{pullRequest.title}</a>
+            <a
+              href={pullRequest.permalink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {pullRequest.title}
+            </a>
           </p>
         </div>
 
