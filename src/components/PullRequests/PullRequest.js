@@ -32,6 +32,7 @@ export const PullRequest = ({ pullRequest }) => {
             <a
               href={pullRequest.permalink}
               target="_blank"
+              rel="noopener noreferrer"
             >
               {pullRequest.title}
             </a>
