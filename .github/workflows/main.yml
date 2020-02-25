@@ -13,6 +13,8 @@ jobs:
         with:
           node-version: '10.x'
       - name: Deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: | 
           yarn
           yarn deploy
