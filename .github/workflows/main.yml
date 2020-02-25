@@ -15,6 +15,8 @@ jobs:
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: | 
+        run: |
+          git config --global user.name "Deployer"
+          git config --global user.email "git-dash-deployer@jaketaylor.co"
           yarn
           yarn deploy
