@@ -1,11 +1,11 @@
 import React from 'react';
 import { Apollo } from './Apollo';
-// import { Test } from './Test';
 import { Layout } from './components/Layout';
 import { RepoPicker } from './components/RepoPicker';
 import { ConfigController } from './components/ConfigController/ConfigController';
 import { TokenGate } from './components/TokenGate';
 import { PullRequests } from './components/PullRequests/PullRequests';
+import { LabelFilters } from './components/LabelFilters';
 
 export const App = () => {
   return (
@@ -14,7 +14,9 @@ export const App = () => {
         <TokenGate>
           <Apollo>
             <RepoPicker />
-            {/* <Test /> */}
+
+            <LabelFilters />
+
             <PullRequests />
           </Apollo>
         </TokenGate>
