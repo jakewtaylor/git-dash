@@ -1,4 +1,4 @@
-name: CI
+name: Deploy to GitHub pages
 
 on:
   push:
@@ -12,11 +12,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - name: Deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
         run: |
-          git config --global user.name "Deployer"
-          git config --global user.email "git-dash-deployer@jaketaylor.co"
           yarn
-          yarn deploy
+          yarn build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
