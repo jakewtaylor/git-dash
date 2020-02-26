@@ -1,7 +1,12 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      inset: {
+        'full': '100%',
+        '1/2': '50%',
+      },
+    },
   },
   variants: {},
   plugins: [],
-}
+};

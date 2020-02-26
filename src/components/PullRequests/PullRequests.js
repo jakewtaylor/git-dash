@@ -1,65 +1,30 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useConfig } from '../ConfigController/ConfigController';
+import { FilterModes } from '../ConfigController/useLabels';
 import { PullRequest } from './PullRequest';
 import { useStyles } from './PullRequests.styles';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
-
-const GET_PULL_REQUESTS = gql`
-  query PullRequests($query: String!, $limit: Int!) {
-    search(query: $query, type: ISSUE, last: $limit) {
-      nodes {
-        ... on PullRequest {
-          id
-          title
-          createdAt
-          updatedAt
-          permalink
-          author {
-            login
-            avatarUrl
-          }
-          repository {
-            nameWithOwner
-            owner {
-              avatarUrl
-            }
-          }
-          labels(first: 15) {
-            nodes {
-              name
-              color
-            }
-          }
-          reviews(last: 100) {
-            nodes {
-              id
-              createdAt
-              state
-              author {
-                login
-                avatarUrl
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { usePullRequests } from '../../hooks/queries/usePullRequests';
 
 export const PullRequests = () => {
-  const { selectedRepos } = useConfig();
+  const { selectedRepos, labels } = useConfig();
   const styles = useStyles();
 
   const limit = selectedRepos.repos.length < 1 ? 10 : 100;
-  const query =
-    'is:pr is:open ' +
-    selectedRepos.repos.map(r => `repo:${r.nameWithOwner}`).join(' ');
-  const { loading, error, data } = useQuery(GET_PULL_REQUESTS, {
-    variables: { query, limit },
-    pollInterval: 30000,
-  });
+
+  const query = useMemo(() => {
+    const repoQuery = selectedRepos.repos
+      .map(r => `repo:${r.nameWithOwner}`)
+      .join(' ');
+
+    const labelQuery =
+      labels.filterMode === FilterModes.BLACKLIST
+        ? labels.blacklist.map(label => `-label:"${label.name}"`).join(' ')
+        : labels.whitelist.map(label => `label:"${label.name}"`).join(' ');
+
+    return `is:pr is:open ${repoQuery} ${labelQuery}`;
+  }, [selectedRepos.repos, labels]);
+
+  const { loading, error, pullRequests } = usePullRequests(query, limit);
 
   return loading ? (
     <p>Loading...</p>
@@ -67,10 +32,9 @@ export const PullRequests = () => {
     <p>Something went wrong...</p>
   ) : (
     <div className={styles.pullRequests}>
-      {data.search.nodes.map(pullRequest => (
+      {pullRequests.map(pullRequest => (
         <PullRequest pullRequest={pullRequest} key={pullRequest.id} />
       ))}
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );
 };

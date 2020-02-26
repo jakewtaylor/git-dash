@@ -3,9 +3,11 @@ import { parseISO, format } from 'date-fns';
 import { useStyles } from './PullRequest.styles';
 import { StatusIcon } from './StatusIcon';
 import { Labels } from './Labels';
+import { useConfig } from '../ConfigController/ConfigController';
 
 export const PullRequest = ({ pullRequest }) => {
   const styles = useStyles();
+  const { labels } = useConfig();
 
   const created = format(parseISO(pullRequest.createdAt), 'do MMM HH:mm');
   const updated = format(parseISO(pullRequest.updatedAt), 'do MMM HH:mm');
@@ -26,7 +28,25 @@ export const PullRequest = ({ pullRequest }) => {
               </p>
             </div>
 
-            <Labels labels={pullRequest.labels.nodes} />
+            <Labels
+              labels={pullRequest.labels.nodes}
+              buttons={({ className, label }) => (
+                <>
+                  <button
+                    className={className}
+                    onClick={() => labels.addToWhitelist(label)}
+                  >
+                    Whitelist
+                  </button>
+                  <button
+                    className={className}
+                    onClick={() => labels.addToBlacklist(label)}
+                  >
+                    Blacklist
+                  </button>
+                </>
+              )}
+            />
           </div>
           <p className={styles.title}>
             <a
