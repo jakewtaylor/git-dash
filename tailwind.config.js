@@ -3,6 +3,14 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        gray: {
+          ...defaultTheme.colors.gray,
+          '750': '#424c5c',
+          '850': '#232b38',
+        },
+      },
+
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
@@ -18,6 +26,11 @@ module.exports = {
   },
   variants: {
     fontWeight: ['active'],
+    backgroundColor: ['dark', 'dark-hover', 'dark-focus'],
+    textColor: ['dark', 'dark-hover', 'dark-focus'],
+    borderColor: ['dark'],
+    borderWidth: ['last'],
+    boxShadow: ['active'],
   },
-  plugins: [],
+  plugins: [require('tailwindcss-dark-mode')()],
 };

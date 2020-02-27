@@ -3,20 +3,20 @@ import { useTailwind } from '../hooks/useTailwind';
 export const useStyles = () =>
   useTailwind({
     repos: `
-        flex flex-row items-center justify-center flex-wrap
+        flex flex-row items-center justify-center flex-wrap mb-4
     `,
 
     repo: `
-        bg-gray-400 inline-block whitespace-no-wrap
+        bg-gray-400 dark:bg-gray-800
+        focus:bg-purple-300 dark-focus:bg-purple-800
+        text-gray-800 dark:text-gray-400
+        focus:text-purple-800 dark-focus:text-purple-300
+        inline-block whitespace-no-wrap
         m-1 rounded-full p-1 pr-3
         flex flex-row items-center
-        text-gray-800
 
         hover:bg-gray-500
         focus:outline-none
-        focus:bg-purple-300
-
-        focus:text-purple-800
     `,
 
     imageContainer: `

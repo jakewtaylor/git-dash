@@ -6,6 +6,7 @@ import { ConfigController } from './components/ConfigController/ConfigController
 import { TokenGate } from './components/TokenGate';
 import { PullRequests } from './components/PullRequests/PullRequests';
 import { LabelFilters } from './components/LabelFilters';
+import { DarkModeToggle } from './components/DarkModeToggle';
 
 export const App = () => {
   return (
@@ -13,6 +14,8 @@ export const App = () => {
       <Layout>
         <TokenGate>
           <Apollo>
+            <DarkModeToggle />
+
             <RepoPicker />
 
             <LabelFilters />

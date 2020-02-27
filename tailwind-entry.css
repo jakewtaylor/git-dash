@@ -7,5 +7,11 @@
 html,
 body,
 #root {
-  @apply h-full bg-gray-200 antialiased;
+  @apply h-full bg-gray-200 antialiased box-border;
+}
+
+.mode-dark,
+.mode-dark body,
+.mode-dark #root {
+  @apply bg-gray-900;
 }

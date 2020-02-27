@@ -4,7 +4,8 @@ export const useStyles = () =>
   useTailwind({
     pullRequest: `
         p-6
-        border-b border-gray-300
+        border-b border-gray-300 dark:border-gray-750
+        last:border-b-0
     `,
 
     preTitle: `
@@ -20,7 +21,7 @@ export const useStyles = () =>
     `,
 
     repo: `
-        text-base text-gray-800 leading-none mr-2
+        text-base text-gray-800 dark:text-gray-500 leading-none mr-2
     `,
 
     titleBar: `
@@ -29,13 +30,15 @@ export const useStyles = () =>
 
     title: `
         text-gray-900 font-semibold text-lg
+        dark:text-gray-300
         block p-1 -mx-1
     `,
 
     author: `
         inline-flex flex-row items-center
         relative
-        bg-gray-400 rounded-full py-2 pl-3 pr-12
+        bg-gray-400 dark:bg-gray-850
+        rounded-full py-2 pl-3 pr-12
         shadow-inner
     `,
 
@@ -46,11 +49,12 @@ export const useStyles = () =>
     `,
 
     authorName: `
-        text-sm leading-none text-gray-900 whitespace-no-wrap
+        text-sm leading-none whitespace-no-wrap
+        text-gray-900 dark:text-gray-400
     `,
 
     timestamps: `
-        text-sm leading-none text-gray-700
+        text-sm leading-none text-gray-700 dark:text-gray-500
         pointer-events-none
     `,
 

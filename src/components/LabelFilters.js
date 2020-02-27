@@ -9,6 +9,7 @@ export const LabelFilters = () => {
   const {
     filterMode,
     filterList,
+    removeFromWhitelist,
     removeFromBlacklist,
     toggleFilterMode,
     filterEnabled,
@@ -38,7 +39,11 @@ export const LabelFilters = () => {
                 buttons={({ className, label }) => (
                   <button
                     className={className}
-                    onClick={() => removeFromBlacklist(label)}
+                    onClick={() =>
+                      filterMode === FilterModes.WHITELIST
+                        ? removeFromWhitelist(label)
+                        : removeFromBlacklist(label)
+                    }
                   >
                     remove from {filterMode.toLowerCase()}
                   </button>
