@@ -11477,6 +11477,8 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 200ms;
 }
 
 .mode-dark,

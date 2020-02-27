@@ -7,7 +7,7 @@
 html,
 body,
 #root {
-  @apply h-full bg-gray-200 antialiased box-border;
+  @apply h-full bg-gray-200 antialiased box-border transition-colors duration-200;
 }
 
 .mode-dark,
