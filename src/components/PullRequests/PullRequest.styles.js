@@ -8,7 +8,7 @@ export const useStyles = () =>
     `,
 
     preTitle: `
-        flex flex-row items-center mb-2
+        flex flex-row items-center mb-1
     `,
 
     owner: `
@@ -29,6 +29,7 @@ export const useStyles = () =>
 
     title: `
         text-gray-900 font-semibold text-lg
+        block p-1 -mx-1
     `,
 
     author: `
@@ -50,6 +51,7 @@ export const useStyles = () =>
 
     timestamps: `
         text-sm leading-none text-gray-700
+        pointer-events-none
     `,
 
     reviewers: `

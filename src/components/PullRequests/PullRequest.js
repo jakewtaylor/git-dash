@@ -48,15 +48,14 @@ export const PullRequest = ({ pullRequest }) => {
               )}
             />
           </div>
-          <p className={styles.title}>
-            <a
-              href={pullRequest.permalink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {pullRequest.title}
-            </a>
-          </p>
+          <a
+            className={styles.title}
+            href={pullRequest.permalink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {pullRequest.title}
+          </a>
         </div>
 
         <div className={styles.author}>
