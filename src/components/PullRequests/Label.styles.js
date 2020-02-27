@@ -21,10 +21,11 @@ export const useStyles = () =>
 
     tooltip: `
         bg-white rounded border border-gray-300
-        shadow-lg py-2 w-32 flex flex-col
+        shadow-lg py-1 min-w-48 flex flex-col items-stretch
     `,
 
     button: `
+        lowercase whitespace-no-wrap
         leading-none px-4 py-2 text-sm text-gray-700
         hover:bg-purple-300 hover:text-purple-800
         focus:outline-none

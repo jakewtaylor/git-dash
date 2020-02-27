@@ -16,10 +16,11 @@ export const PullRequests = () => {
       .map(r => `repo:${r.nameWithOwner}`)
       .join(' ');
 
-    const labelQuery =
-      labels.filterMode === FilterModes.BLACKLIST
+    const labelQuery = labels.filterEnabled
+      ? labels.filterMode === FilterModes.BLACKLIST
         ? labels.blacklist.map(label => `-label:"${label.name}"`).join(' ')
-        : labels.whitelist.map(label => `label:"${label.name}"`).join(' ');
+        : labels.whitelist.map(label => `label:"${label.name}"`).join(' ')
+      : '';
 
     return `is:pr is:open ${repoQuery} ${labelQuery}`;
   }, [selectedRepos.repos, labels]);

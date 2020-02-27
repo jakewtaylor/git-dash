@@ -10,8 +10,14 @@ module.exports = {
         'full': '100%',
         '1/2': '50%',
       },
+
+      minWidth: {
+        '48': '12rem',
+      },
     },
   },
-  variants: {},
+  variants: {
+    fontWeight: ['active'],
+  },
   plugins: [],
 };

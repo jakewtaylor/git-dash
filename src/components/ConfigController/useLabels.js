@@ -8,9 +8,15 @@ export const FilterModes = {
 };
 
 export const useLabels = () => {
+  const { BLACKLIST, WHITELIST } = FilterModes;
+  const [filterEnabled, setFilterEnabled] = useRememberedState(
+    ConfigKeys.LABEL_FILTER_ENABLED,
+    false,
+  );
+
   const [filterMode, setFilterMode] = useRememberedState(
     ConfigKeys.LABEL_FILTER_MODE,
-    FilterModes.BLACKLIST,
+    BLACKLIST,
   );
 
   const [whitelist, setWhitelist] = useRememberedState(
@@ -28,9 +34,14 @@ export const useLabels = () => {
       whitelist,
       blacklist,
       filterMode,
+      filterList: filterMode === WHITELIST ? whitelist : blacklist,
+      filterEnabled,
+
+      toggleFilter() {
+        setFilterEnabled(v => !v);
+      },
 
       toggleFilterMode() {
-        const { WHITELIST, BLACKLIST } = FilterModes;
         setFilterMode(f => (f === WHITELIST ? BLACKLIST : WHITELIST));
       },
 
@@ -65,6 +76,10 @@ export const useLabels = () => {
       setBlacklist,
       filterMode,
       setFilterMode,
+      filterEnabled,
+      setFilterEnabled,
+      BLACKLIST,
+      WHITELIST,
     ],
   );
 };

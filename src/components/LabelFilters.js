@@ -2,55 +2,68 @@ import React from 'react';
 import { Labels } from './PullRequests/Labels';
 import { useConfig } from './ConfigController/ConfigController';
 import { useStyles } from './LabelFilters.styles';
+import { FilterModes } from './ConfigController/useLabels';
 
 export const LabelFilters = () => {
   const { labels } = useConfig();
+  const {
+    filterMode,
+    filterList,
+    removeFromBlacklist,
+    toggleFilterMode,
+    filterEnabled,
+    toggleFilter,
+  } = labels;
   const styles = useStyles();
 
+  const listEmpty = filterList.length < 1;
+
   return (
-    <div className={styles.container}>
-      <div className={styles.section}>
-        <p className={styles.text}>mode: {labels.filterMode}</p>
-        <button onClick={labels.toggleFilterMode} className={styles.button}>
-          toggle
-        </button>
-      </div>
+    <>
+      <div className={styles.container}>
+        <div className={styles.selected}>
+          {filterEnabled ? (
+            <>
+              <p className={styles.selectedLabel}>
+                {filterMode === FilterModes.WHITELIST
+                  ? listEmpty
+                    ? 'no items in whitelist'
+                    : 'showing only'
+                  : listEmpty
+                  ? 'no items in blacklist'
+                  : 'hiding'}
+              </p>
+              <Labels
+                labels={filterList}
+                buttons={({ className, label }) => (
+                  <button
+                    className={className}
+                    onClick={() => removeFromBlacklist(label)}
+                  >
+                    remove from {filterMode.toLowerCase()}
+                  </button>
+                )}
+              />
+            </>
+          ) : null}
+        </div>
 
-      <div className={styles.section}>
-        <p className={styles.text}>whitelist:</p>
-        <Labels
-          labels={labels.whitelist}
-          buttons={({ className, label }) => (
+        <div>
+          {filterEnabled ? (
             <button
-              className={className}
-              onClick={() => labels.removeFromWhitelist(label)}
+              className={styles.button}
+              onClick={() => toggleFilterMode()}
             >
-              Remove
+              switch to{' '}
+              {filterMode === FilterModes.WHITELIST ? 'blacklist' : 'whitelist'}{' '}
+              mode
             </button>
-          )}
-        />
-        <button onClick={labels.clearWhitelist} className={styles.button}>
-          clear
-        </button>
+          ) : null}
+          <button className={styles.button2} onClick={() => toggleFilter()}>
+            {filterEnabled ? 'disable' : 'enable'} filter
+          </button>
+        </div>
       </div>
-
-      <div className={styles.section}>
-        <p className={styles.text}>blacklist:</p>
-        <Labels
-          labels={labels.blacklist}
-          buttons={({ className, label }) => (
-            <button
-              className={className}
-              onClick={() => labels.removeFromBlacklist(label)}
-            >
-              Remove
-            </button>
-          )}
-        />
-        <button onClick={labels.clearBlacklist} className={styles.button}>
-          clear
-        </button>
-      </div>
-    </div>
+    </>
   );
 };

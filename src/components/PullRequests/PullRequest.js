@@ -36,13 +36,13 @@ export const PullRequest = ({ pullRequest }) => {
                     className={className}
                     onClick={() => labels.addToWhitelist(label)}
                   >
-                    Whitelist
+                    add to whitelist
                   </button>
                   <button
                     className={className}
                     onClick={() => labels.addToBlacklist(label)}
                   >
-                    Blacklist
+                    add to blacklist
                   </button>
                 </>
               )}
