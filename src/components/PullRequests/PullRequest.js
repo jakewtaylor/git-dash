@@ -30,22 +30,47 @@ export const PullRequest = ({ pullRequest }) => {
 
             <Labels
               labels={pullRequest.labels.nodes}
-              buttons={({ className, label }) => (
-                <>
-                  <button
-                    className={className}
-                    onClick={() => labels.addToWhitelist(label)}
-                  >
-                    add to whitelist
-                  </button>
-                  <button
-                    className={className}
-                    onClick={() => labels.addToBlacklist(label)}
-                  >
-                    add to blacklist
-                  </button>
-                </>
-              )}
+              buttons={({ className, label, hideTooltip }) => {
+                const inWhitelist = labels.listHasLabel(
+                  labels.whitelist,
+                  label,
+                );
+                const inBlacklist = labels.listHasLabel(
+                  labels.blacklist,
+                  label,
+                );
+
+                return (
+                  <>
+                    <button
+                      className={className}
+                      onClick={() => {
+                        if (inWhitelist) {
+                          labels.removeFromWhitelist(label);
+                        } else {
+                          labels.addToWhitelist(label);
+                        }
+                        hideTooltip();
+                      }}
+                    >
+                      {inWhitelist ? 'remove from' : 'add to'} whitelist
+                    </button>
+                    <button
+                      className={className}
+                      onClick={() => {
+                        if (inBlacklist) {
+                          labels.removeFromBlacklist(label);
+                        } else {
+                          labels.addToBlacklist(label);
+                        }
+                        hideTooltip();
+                      }}
+                    >
+                      {inBlacklist ? 'remove from' : 'add to'} blacklist
+                    </button>
+                  </>
+                );
+              }}
             />
           </div>
           <a

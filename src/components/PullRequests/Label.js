@@ -42,6 +42,9 @@ export const Label = ({ label, buttons = null }) => {
             {buttons({
               className: styles.button,
               label,
+              hideTooltip() {
+                setShowTooltip(false);
+              },
             })}
           </div>
         ) : null}

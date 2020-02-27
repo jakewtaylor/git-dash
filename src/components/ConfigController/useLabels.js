@@ -1,6 +1,6 @@
 import { useRememberedState } from '../../hooks/useRememberedState';
 import { ConfigKeys } from './ConfigKeys';
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 
 export const FilterModes = {
   WHITELIST: 'WHITELIST',
@@ -29,6 +29,15 @@ export const useLabels = () => {
     [],
   );
 
+  const addToList = useCallback(
+    label => list => {
+      const isDuplicate = list.findIndex(l => l.name === label.name) >= 0;
+
+      return isDuplicate ? list : [...list, label];
+    },
+    [],
+  );
+
   return useMemo(
     () => ({
       whitelist,
@@ -36,6 +45,10 @@ export const useLabels = () => {
       filterMode,
       filterList: filterMode === WHITELIST ? whitelist : blacklist,
       filterEnabled,
+
+      listHasLabel(list, label) {
+        return list.findIndex(l => l.name === label.name) >= 0;
+      },
 
       toggleFilter() {
         setFilterEnabled(v => !v);
@@ -46,7 +59,7 @@ export const useLabels = () => {
       },
 
       addToWhitelist(label) {
-        setWhitelist(wl => [...wl, label]);
+        setWhitelist(addToList(label));
       },
 
       clearWhitelist() {
@@ -58,7 +71,7 @@ export const useLabels = () => {
       },
 
       addToBlacklist(label) {
-        setBlacklist(bl => [...bl, label]);
+        setBlacklist(addToList(label));
       },
 
       clearBlacklist() {
@@ -80,6 +93,7 @@ export const useLabels = () => {
       setFilterEnabled,
       BLACKLIST,
       WHITELIST,
+      addToList,
     ],
   );
 };
