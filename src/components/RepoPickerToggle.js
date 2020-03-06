@@ -15,7 +15,7 @@ export const RepoPickerToggle = ({ open, selectedCount, onClick }) => {
         <ExpandLess />
       </div>
       <div>
-        <span className={styles.count}>{open ? selectedCount : ''}</span>
+        <span className={styles.count}>{open ? selectedCount : selectedCount || ''}</span>
         {text}
       </div>
     </button>
