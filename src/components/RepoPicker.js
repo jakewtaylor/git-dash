@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useUserRepos } from '../hooks/queries/useUserRepos';
-
 import { useConfig } from './ConfigController/ConfigController';
 import { RepoList } from './RepoList';
 import { useStyles } from './RepoPicker.styles';
 import { RepoPickerToggle } from './RepoPickerToggle';
 import { CSSTransition } from 'react-transition-group';
+import { useRememberedState } from '../hooks/useRememberedState';
+import { ConfigKeys } from './ConfigController/ConfigKeys';
 
 import './RepoPicker.css';
 
 export const RepoPicker = ({ onChoose }) => {
   const { loading, repos, error } = useUserRepos();
   const { selectedRepos } = useConfig();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useRememberedState(ConfigKeys.REPO_PICKER_OPEN, true);
   const styles = useStyles();
 
   const handleChoose = repo => e => {
