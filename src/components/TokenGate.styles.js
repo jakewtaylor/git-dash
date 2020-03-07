@@ -9,6 +9,7 @@ export const useStyles = () =>
     text: `
         text-center max-w-md
         text-gray-800 mb-4
+        dark:text-gray-600
     `,
 
     link: `
@@ -21,9 +22,13 @@ export const useStyles = () =>
 
     input: `
         w-56 h-12 px-4 rounded-l
-        border border-gray-400 border-r-0
+        border border-r-0
+        border-gray-400 dark:border-gray-750
+        bg-gray-100 dark:bg-gray-600
         focus:outline-none
         focus:border-purple-600
+        placeholder-gray-500
+        text-gray-800 dark:text-gray-400
     `,
 
     button: `

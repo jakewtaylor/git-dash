@@ -3,7 +3,7 @@ import { useTailwind } from '../hooks/useTailwind';
 export const useStyles = () =>
   useTailwind({
     container: `
-        py-4 flex flex-row items-center justify-end
+        flex flex-row items-center justify-end
     `,
 
     icon: `

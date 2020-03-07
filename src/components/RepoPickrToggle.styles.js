@@ -3,11 +3,11 @@ import { useTailwind } from '../hooks/useTailwind';
 export const useStyles = () =>
   useTailwind({
     button: `
-      bg-gray-100 dark:bg-gray-800
-      border-gray-300 dark:border-gray-750
-      mb-4 py-2 px-4 shadow-sm rounded border
+      py-2 px-1 mr-8
+      border-b border-t border-gray-400 dark:border-gray-850
       text-gray-800 dark:text-white text-sm leading-loose
       flex justify-between w-full
+      focus:outline-none
     `,
     icon: `
       transition transition-transform duration-200 ease-in-out
@@ -18,5 +18,5 @@ export const useStyles = () =>
     `,
     count: `
        font-bold
-    `
+    `,
   });

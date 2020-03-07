@@ -26,11 +26,12 @@ module.exports = {
   },
   variants: {
     fontWeight: ['active'],
-    backgroundColor: ['dark', 'dark-hover', 'dark-focus'],
-    textColor: ['dark', 'dark-hover', 'dark-focus'],
+    backgroundColor: ['hover', 'dark', 'dark-hover', 'dark-focus'],
+    textColor: ['hover', 'dark', 'dark-hover', 'dark-focus'],
     borderColor: ['dark'],
     borderWidth: ['last'],
     boxShadow: ['active'],
+    placeholderColor: ['dark'],
   },
   plugins: [require('tailwindcss-dark-mode')()],
 };

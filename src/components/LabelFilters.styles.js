@@ -4,7 +4,7 @@ export const useStyles = () =>
   useTailwind({
     container: `
         flex flex-row justify-between items-end
-        w-full mb-2 px-1 mt-16
+        w-full mb-2 px-1
     `,
 
     selected: `

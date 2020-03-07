@@ -4,10 +4,10 @@ import { useStyles } from './RepoPickrToggle.styles';
 
 export const RepoPickerToggle = ({ open, selectedCount, onClick }) => {
   const styles = useStyles();
-  const text = selectedCount === 0 && !open
-    ? 'Click to select repositories you want to see'
-    : ` ${selectedCount === 1 ? 'repository' : 'repositories'} selected`;
-
+  const text =
+    selectedCount === 0 && !open
+      ? 'Click to select repositories you want to see'
+      : ` ${selectedCount === 1 ? 'repository' : 'repositories'} selected`;
 
   return (
     <button className={styles.button} onClick={onClick}>
@@ -15,7 +15,9 @@ export const RepoPickerToggle = ({ open, selectedCount, onClick }) => {
         <ExpandLess />
       </div>
       <div>
-        <span className={styles.count}>{open ? selectedCount : selectedCount || ''}</span>
+        <span className={styles.count}>
+          {open ? selectedCount : selectedCount || ''}
+        </span>
         {text}
       </div>
     </button>

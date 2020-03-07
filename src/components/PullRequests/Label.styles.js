@@ -20,14 +20,17 @@ export const useStyles = () =>
     `,
 
     tooltip: `
-        bg-white rounded border border-gray-300
+        bg-white dark:bg-gray-750 rounded
+        border border-gray-300 dark:border-gray-800
         shadow-lg py-1 min-w-48 flex flex-col items-stretch
     `,
 
     button: `
         lowercase whitespace-no-wrap
-        leading-none px-4 py-2 text-sm text-gray-700
+        leading-none px-4 py-2 text-sm
+        text-gray-700 dark:text-gray-300
         hover:bg-purple-300 hover:text-purple-800
+        dark-hover:bg-purple-600 dark-hover:text-purple-100
         focus:outline-none
         focus:bg-gray-200
     `,

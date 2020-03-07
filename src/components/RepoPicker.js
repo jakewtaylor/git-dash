@@ -9,6 +9,7 @@ import { useRememberedState } from '../hooks/useRememberedState';
 import { ConfigKeys } from './ConfigController/ConfigKeys';
 
 import './RepoPicker.css';
+import { DarkModeToggle } from './DarkModeToggle';
 
 export const RepoPicker = ({ onChoose }) => {
   const { loading, repos, error } = useUserRepos();
@@ -30,13 +31,16 @@ export const RepoPicker = ({ onChoose }) => {
 
   return (
     <>
-      <RepoPickerToggle
-        open={open}
-        selectedCount={selectedRepos.repos.length}
-        onClick={() => setOpen(o => !o)}
-      />
+      <div className={styles.barWrapper}>
+        <RepoPickerToggle
+          open={open}
+          selectedCount={selectedRepos.repos.length}
+          onClick={() => setOpen(o => !o)}
+        />
+        <DarkModeToggle />
+      </div>
       <CSSTransition in={open} timeout={200} classNames="picker" unmountOnExit>
-        <div className={[styles.container]}>
+        <div className={styles.container}>
           <p className={styles.text}>
             Get started by picking some repos you want to see:
           </p>
