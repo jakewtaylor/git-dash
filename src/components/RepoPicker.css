@@ -1,0 +1,17 @@
+.picker-enter {
+    opacity: 0;
+}
+
+.picker-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+.picker-exit {
+    opacity: 1;
+}
+
+.picker-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}
