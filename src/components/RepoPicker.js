@@ -33,7 +33,7 @@ export const RepoPicker = ({ onChoose }) => {
       <RepoPickerToggle
         open={open}
         selectedCount={selectedRepos.repos.length}
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(o => !o)}
       />
       <CSSTransition in={open} timeout={200} classNames="picker" unmountOnExit>
         <div className={[styles.container]}>
