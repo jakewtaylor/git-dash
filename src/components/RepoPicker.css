@@ -1,17 +1,26 @@
+div[class*='picker'] {
+  transform-origin: top center;
+  transition: all 0.2s;
+}
+
 .picker-enter {
-    opacity: 0;
+  /* opacity: 0; */
+  transform: scaleY(0);
 }
 
 .picker-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
+  /* opacity: 1; */
+  /* transition: opacity 200ms; */
+  transform: scaleY(1);
 }
 
 .picker-exit {
-    opacity: 1;
+  /* opacity: 1; */
+  transform: scaleY(1);
 }
 
 .picker-exit-active {
-    opacity: 0;
-    transition: opacity 200ms;
+  transform: scaleY(0);
+  /* opacity: 0; */
+  /* transition: opacity 200ms; */
 }
