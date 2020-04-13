@@ -38,6 +38,15 @@ const GET_PULL_REQUESTS = gql`
               }
             }
           }
+          commits(last: 1) {
+            nodes {
+              commit {
+                statusCheckRollup {
+                  state
+                }
+              }
+            }
+          }
         }
       }
     }

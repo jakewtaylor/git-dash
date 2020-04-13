@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { parseISO, format } from 'date-fns';
 import { useStyles } from './PullRequest.styles';
 import { StatusIcon } from './StatusIcon';
 import { Labels } from './Labels';
 import { useConfig } from '../ConfigController/ConfigController';
+import { BuildStatus } from './BuildStatus';
 
 export const PullRequest = ({ pullRequest }) => {
   const styles = useStyles();
@@ -11,6 +12,13 @@ export const PullRequest = ({ pullRequest }) => {
 
   const created = format(parseISO(pullRequest.createdAt), 'do MMM HH:mm');
   const updated = format(parseISO(pullRequest.updatedAt), 'do MMM HH:mm');
+
+  const buildStatus = useMemo(() => {
+    const { nodes } = pullRequest.commits;
+    const { commit } = nodes[nodes.length - 1] || { commit: null };
+
+    return commit ? commit.statusCheckRollup.state : null;
+  }, [pullRequest]);
 
   return (
     <div className={styles.pullRequest} key={pullRequest.id}>
@@ -95,6 +103,8 @@ export const PullRequest = ({ pullRequest }) => {
 
       <p className={styles.timestamps}>
         created {created}, last updated {updated}
+
+        <BuildStatus status={buildStatus} />
       </p>
 
       <div className={styles.reviewers}>
