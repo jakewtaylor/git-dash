@@ -17,7 +17,9 @@ export const PullRequest = ({ pullRequest }) => {
     const { nodes } = pullRequest.commits;
     const { commit } = nodes[nodes.length - 1] || { commit: null };
 
-    return commit ? commit.statusCheckRollup.state : null;
+    return commit && commit.statusCheckRollup
+      ? commit.statusCheckRollup.state
+      : null;
   }, [pullRequest]);
 
   return (
