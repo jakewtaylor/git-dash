@@ -7,4 +7,12 @@ export const useStyles = () =>
         border-gray-300 dark:border-gray-750
         mb-4 shadow-sm rounded border
     `,
+
+    empty: `
+      text-center p-8
+    `,
+
+    emptyText: `
+      text-gray-700 dark:text-gray-500
+    `,
   });

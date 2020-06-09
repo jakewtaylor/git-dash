@@ -13,13 +13,13 @@ export const PullRequests = () => {
 
   const query = useMemo(() => {
     const repoQuery = selectedRepos.repos
-      .map(r => `repo:${r.nameWithOwner}`)
+      .map((r) => `repo:${r.nameWithOwner}`)
       .join(' ');
 
     const labelQuery = labels.filterEnabled
       ? labels.filterMode === FilterModes.BLACKLIST
-        ? labels.blacklist.map(label => `-label:"${label.name}"`).join(' ')
-        : labels.whitelist.map(label => `label:"${label.name}"`).join(' ')
+        ? labels.blacklist.map((label) => `-label:"${label.name}"`).join(' ')
+        : labels.whitelist.map((label) => `label:"${label.name}"`).join(' ')
       : '';
 
     return `is:pr is:open ${repoQuery} ${labelQuery}`;
@@ -33,9 +33,15 @@ export const PullRequests = () => {
     <p>Something went wrong...</p>
   ) : (
     <div className={styles.pullRequests}>
-      {pullRequests.map(pullRequest => (
-        <PullRequest pullRequest={pullRequest} key={pullRequest.id} />
-      ))}
+      {pullRequests.length > 0 ? (
+        pullRequests.map((pullRequest) => (
+          <PullRequest pullRequest={pullRequest} key={pullRequest.id} />
+        ))
+      ) : (
+        <div className={styles.empty}>
+          <p className={styles.emptyText}>No open pull requests.</p>
+        </div>
+      )}
     </div>
   );
 };
