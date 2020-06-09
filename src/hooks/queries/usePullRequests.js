@@ -11,6 +11,8 @@ const GET_PULL_REQUESTS = gql`
           createdAt
           updatedAt
           permalink
+          baseRefName
+          headRefName
           author {
             login
             avatarUrl

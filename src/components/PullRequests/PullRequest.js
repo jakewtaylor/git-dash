@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { parseISO, format } from 'date-fns';
+import ArrowLeftRoundedIcon from '@material-ui/icons/ArrowLeftRounded';
 import { useStyles } from './PullRequest.styles';
-import { StatusIcon } from './StatusIcon';
 import { Labels } from './Labels';
 import { useConfig } from '../ConfigController/ConfigController';
 import { BuildStatus } from './BuildStatus';
@@ -103,6 +103,12 @@ export const PullRequest = ({ pullRequest }) => {
           <p className={styles.authorName}>{pullRequest.author.login}</p>
         </div>
       </div>
+
+      <p className={styles.branches}>
+        <span>{pullRequest.baseRefName}</span>
+        <ArrowLeftRoundedIcon />
+        <span>{pullRequest.headRefName}</span>
+      </p>
 
       <p className={styles.timestamps}>
         created {created}, last updated {updated}

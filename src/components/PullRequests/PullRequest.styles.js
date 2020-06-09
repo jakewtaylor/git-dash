@@ -57,4 +57,11 @@ export const useStyles = () =>
         text-sm leading-none text-gray-700 dark:text-gray-500
         pointer-events-none
     `,
+
+    branches: `
+        inline-flex flex-row items-center
+        text-xs px-2 mb-2 rounded
+        bg-gray-300 text-gray-800
+        dark:bg-gray-500 dark:text-gray-900
+    `,
   });

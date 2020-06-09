@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { format, parseISO } from 'date-fns';
 import { StatusIcon } from './StatusIcon';
 import { useStyles } from './Reviews.styles';
 
@@ -25,8 +24,6 @@ export const Reviews = ({ reviews }) => {
       }, {}),
     ).filter((group) => group.reviews.length > 0);
   }, [reviews]);
-
-  console.log(reviews, reviewsGroupedByUser);
 
   return (
     <>
