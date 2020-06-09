@@ -57,21 +57,4 @@ export const useStyles = () =>
         text-sm leading-none text-gray-700 dark:text-gray-500
         pointer-events-none
     `,
-
-    reviewers: `
-        flex flex-row mt-3
-    `,
-
-    review: `
-        relative mr-4
-    `,
-
-    reviewerAvatar: `
-        w-10 h-10 rounded-full
-        shadow
-    `,
-
-    reviewStatus: `
-        absolute
-    `,
   });

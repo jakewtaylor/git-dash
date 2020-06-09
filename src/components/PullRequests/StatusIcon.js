@@ -7,7 +7,7 @@ import MoodBadRoundedIcon from '@material-ui/icons/MoodBadRounded';
 import ClearRoundedIcon from '@material-ui/icons/ClearRounded';
 import { useStyles } from './StatusIcon.styles';
 
-export const StatusIcon = ({ status, ...props }) => {
+export const StatusIcon = ({ status, offset = 0, last = false, ...props }) => {
   const styles = useStyles();
 
   const Icon =
@@ -46,10 +46,16 @@ export const StatusIcon = ({ status, ...props }) => {
       DISMISSED: 'Dismissed',
     }[status] || `Unknown Status '${status}'`;
 
+  const leftOffset = 0.75 + offset * (last ? 0.5 : 0.4);
+
   return (
     <div
       className={`${bgClass} ${textClass} ${styles.container}`}
-      style={{ right: '-.75rem', bottom: '-.75rem' }}
+      style={{
+        left: `${leftOffset}rem`,
+        bottom: '-.75rem',
+        transform: !last ? 'scale(0.8)' : '',
+      }}
       title={title}
     >
       <Icon className={styles.icon} fontSize="inherit" />

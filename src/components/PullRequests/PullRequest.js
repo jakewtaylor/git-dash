@@ -5,6 +5,7 @@ import { StatusIcon } from './StatusIcon';
 import { Labels } from './Labels';
 import { useConfig } from '../ConfigController/ConfigController';
 import { BuildStatus } from './BuildStatus';
+import { Reviews } from './Reviews';
 
 export const PullRequest = ({ pullRequest }) => {
   const styles = useStyles();
@@ -105,33 +106,10 @@ export const PullRequest = ({ pullRequest }) => {
 
       <p className={styles.timestamps}>
         created {created}, last updated {updated}
-
         <BuildStatus status={buildStatus} />
       </p>
 
-      <div className={styles.reviewers}>
-        {pullRequest.reviews.nodes
-          .filter(review => review.state !== 'COMMENTED')
-          .map(review => (
-            <div
-              className={styles.review}
-              key={review.id}
-              title={`Created ${format(
-                parseISO(review.createdAt),
-                'do MMM HH:mm',
-              )}`}
-            >
-              <img
-                src={review.author.avatarUrl}
-                alt={review.author.login}
-                className={styles.reviewerAvatar}
-              />
-              <StatusIcon status={review.state} />
-            </div>
-          ))}
-      </div>
-
-      {/* <pullRequeste>{JSON.stringify(pullRequest, null, 2)}</pullRequeste> */}
+      <Reviews reviews={pullRequest.reviews.nodes} />
     </div>
   );
 };

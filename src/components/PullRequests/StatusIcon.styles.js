@@ -5,7 +5,7 @@ export const useStyles = () =>
     container: `
         w-8 h-8 absolute
         flex items-center justify-center
-        rounded-full shadow
+        rounded-full shadow-lg
     `,
 
     icon: `
