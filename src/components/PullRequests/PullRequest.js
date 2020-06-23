@@ -6,6 +6,7 @@ import { Labels } from './Labels';
 import { useConfig } from '../ConfigController/ConfigController';
 import { BuildStatus } from './BuildStatus';
 import { Reviews } from './Reviews';
+import { Label } from './Label';
 
 export const PullRequest = ({ pullRequest }) => {
   const styles = useStyles();
@@ -38,6 +39,8 @@ export const PullRequest = ({ pullRequest }) => {
                 {pullRequest.repository.nameWithOwner}
               </p>
             </div>
+
+            {pullRequest.isDraft && <Label label={{name: 'draft', color: 'CBD5E0'}}></Label>}
 
             <Labels
               labels={pullRequest.labels.nodes}
