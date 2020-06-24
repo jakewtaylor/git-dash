@@ -11,6 +11,7 @@ const GET_PULL_REQUESTS = gql`
           createdAt
           updatedAt
           permalink
+          isDraft
           baseRefName
           headRefName
           author {
