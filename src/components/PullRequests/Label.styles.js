@@ -13,6 +13,11 @@ export const useStyles = () =>
         focus:outline-none
         focus:opacity-75
         hover:shadow
+        flex items-center
+    `,
+
+    icon: `
+        mr-1
     `,
 
     tooltipWrapper: `

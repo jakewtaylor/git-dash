@@ -3,7 +3,7 @@ import { getContrastingColor } from '../../hooks/useContrastingColor';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { useStyles } from './Label.styles';
 
-export const Label = ({ label, buttons = null }) => {
+export const Label = ({ label, buttons = null, IconComponent }) => {
   const styles = useStyles();
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltip = useRef();
@@ -26,6 +26,9 @@ export const Label = ({ label, buttons = null }) => {
           color: getContrastingColor(label.color),
         }}
       >
+        {IconComponent ? (
+          <IconComponent className={styles.icon} style={{ fontSize: 12 }} />
+        ) : null}
         {label.name}
       </button>
 
