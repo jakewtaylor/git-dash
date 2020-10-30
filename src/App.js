@@ -1,4 +1,5 @@
 import React from 'react';
+import { ModalProvider } from 'react-simple-hook-modal';
 import { Apollo } from './Apollo';
 import { Layout } from './components/Layout';
 import { RepoPicker } from './components/RepoPicker';
@@ -7,20 +8,24 @@ import { TokenGate } from './components/TokenGate';
 import { PullRequests } from './components/PullRequests/PullRequests';
 import { LabelFilters } from './components/LabelFilters';
 
+import 'react-simple-hook-modal/dist/styles.css';
+
 export const App = () => {
   return (
-    <ConfigController>
-      <Layout>
-        <TokenGate>
-          <Apollo>
-            <RepoPicker />
+    <ModalProvider>
+      <ConfigController>
+        <Layout>
+          <TokenGate>
+            <Apollo>
+              <RepoPicker />
 
-            <LabelFilters />
+              <LabelFilters />
 
-            <PullRequests />
-          </Apollo>
-        </TokenGate>
-      </Layout>
-    </ConfigController>
+              <PullRequests />
+            </Apollo>
+          </TokenGate>
+        </Layout>
+      </ConfigController>
+    </ModalProvider>
   );
 };
