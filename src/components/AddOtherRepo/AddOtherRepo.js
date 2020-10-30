@@ -46,6 +46,7 @@ export const AddOtherRepo = () => {
         isOpen={isModalOpen}
         onBackdropClick={closeModal}
         transition={ModalTransition.TOP_DOWN}
+        modalClassName="dark:bg-gray-900"
       >
         <div className={styles.modalInner}>
           <div className={styles.inputContainer}>
