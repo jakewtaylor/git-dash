@@ -26,7 +26,7 @@ export const useStyles = () =>
     `,
 
     inputContainer: `
-        bg-gray-200 block w-full rounded overflow-none
+        bg-gray-200 dark:bg-gray-700 block w-full rounded overflow-none
         flex flex-row
         mb-4
     `,
@@ -40,9 +40,10 @@ export const useStyles = () =>
     `,
 
     input: `
-        p-2 pl-0 w-full bg-gray-200 rounded
+        p-2 pl-0 w-full bg-gray-200 dark:bg-gray-700 rounded
         flex-1
         focus:outline-none
+        dark:text-gray-400
     `,
 
     emptyText: `

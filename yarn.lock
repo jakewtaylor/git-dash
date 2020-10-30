@@ -9594,10 +9594,8 @@ react-scripts@3.4.0:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-simple-hook-modal@^1.0.1:
+react-simple-hook-modal@../react-simple-hook-modal:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-simple-hook-modal/-/react-simple-hook-modal-1.0.1.tgz#d1c3f76fccf621c71232a51a2646bba167d97884"
-  integrity sha512-xTHR/45voJIzYp9kr3NwKU+A8sNC3s6wapXuPoD6t+K8WcbnSSRhRpkHkR3Vz7S5+72lfi5Q7AiB1r6MLzh9Jw==
   dependencies:
     hooks "^0.3.2"
     react-spring "^8.0.27"
