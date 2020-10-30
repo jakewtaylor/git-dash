@@ -7,9 +7,10 @@ import { RepoPickerToggle } from './RepoPickerToggle';
 import { CSSTransition } from 'react-transition-group';
 import { useRememberedState } from '../hooks/useRememberedState';
 import { ConfigKeys } from './ConfigController/ConfigKeys';
+import { DarkModeToggle } from './DarkModeToggle';
+import { AddOtherRepo } from './AddOtherRepo/AddOtherRepo';
 
 import './RepoPicker.css';
-import { DarkModeToggle } from './DarkModeToggle';
 
 export const RepoPicker = ({ onChoose }) => {
   const { loading, repos, error } = useUserRepos();
@@ -17,13 +18,13 @@ export const RepoPicker = ({ onChoose }) => {
   const [open, setOpen] = useRememberedState(ConfigKeys.REPO_PICKER_OPEN, true);
   const styles = useStyles();
 
-  const handleChoose = repo => e => {
+  const handleChoose = (repo) => (e) => {
     e.preventDefault();
 
     selectedRepos.addRepo(repo);
   };
 
-  const removeRepo = repo => e => {
+  const removeRepo = (repo) => (e) => {
     e.preventDefault();
 
     selectedRepos.removeRepo(repo);
@@ -35,7 +36,7 @@ export const RepoPicker = ({ onChoose }) => {
         <RepoPickerToggle
           open={open}
           selectedCount={selectedRepos.repos.length}
-          onClick={() => setOpen(o => !o)}
+          onClick={() => setOpen((o) => !o)}
         />
         <DarkModeToggle />
       </div>
@@ -51,7 +52,7 @@ export const RepoPicker = ({ onChoose }) => {
           ) : (
             <>
               <RepoList
-                repos={repos.filter(r => !selectedRepos.containsRepo(r))}
+                repos={repos.filter((r) => !selectedRepos.containsRepo(r))}
                 onRepoClick={handleChoose}
               />
 
@@ -65,6 +66,8 @@ export const RepoPicker = ({ onChoose }) => {
                   />
                 </>
               ) : null}
+
+              <AddOtherRepo />
             </>
           )}
         </div>

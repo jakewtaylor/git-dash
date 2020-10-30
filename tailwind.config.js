@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         gray: {
           ...defaultTheme.colors.gray,
-          '750': '#424c5c',
-          '850': '#232b38',
+          750: '#424c5c',
+          850: '#232b38',
         },
       },
 
@@ -20,7 +20,7 @@ module.exports = {
       },
 
       minWidth: {
-        '48': '12rem',
+        48: '12rem',
       },
     },
   },
@@ -32,6 +32,7 @@ module.exports = {
     borderWidth: ['last'],
     boxShadow: ['active'],
     placeholderColor: ['dark'],
+    opacity: ['disabled'],
   },
   plugins: [require('tailwindcss-dark-mode')()],
 };

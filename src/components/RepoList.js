@@ -9,7 +9,7 @@ export const RepoList = ({ repos, onRepoClick = null, removable = false }) => {
 
   return (
     <TransitionGroup className={styles.repos}>
-      {repos.map(repo => (
+      {repos.map((repo) => (
         <CSSTransition key={repo.nameWithOwner} timeout={200} classNames="item">
           <button
             className={styles.repo}
