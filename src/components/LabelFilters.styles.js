@@ -3,7 +3,7 @@ import { useTailwind } from '../hooks/useTailwind';
 export const useStyles = () =>
   useTailwind({
     container: `
-        flex flex-row justify-between items-end
+        flex flex-row justify-between
         w-full mb-2 px-1
     `,
 
@@ -12,7 +12,7 @@ export const useStyles = () =>
     `,
 
     selectedLabel: `
-        -mb-px text-sm
+        text-sm
         mr-2 leading-none
         text-gray-700 dark:text-gray-500
     `,

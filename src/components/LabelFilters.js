@@ -3,9 +3,10 @@ import { Labels } from './PullRequests/Labels';
 import { useConfig } from './ConfigController/ConfigController';
 import { useStyles } from './LabelFilters.styles';
 import { FilterModes } from './ConfigController/useLabels';
+import { DraftLabel } from './DraftLabel';
 
 export const LabelFilters = () => {
-  const { labels } = useConfig();
+  const { labels, drafts } = useConfig();
   const {
     filterMode,
     filterList,
@@ -27,10 +28,10 @@ export const LabelFilters = () => {
             <>
               <p className={styles.selectedLabel}>
                 {filterMode === FilterModes.WHITELIST
-                  ? listEmpty
+                  ? listEmpty && !drafts.whitelisted
                     ? 'no items in whitelist'
                     : 'showing only'
-                  : listEmpty
+                  : listEmpty && !drafts.blacklisted
                   ? 'no items in blacklist'
                   : 'hiding'}
               </p>
@@ -48,7 +49,12 @@ export const LabelFilters = () => {
                     remove from {filterMode.toLowerCase()}
                   </button>
                 )}
-              />
+              >
+                {(filterMode === FilterModes.WHITELIST && drafts.whitelisted) ||
+                (filterMode === FilterModes.BLACKLIST && drafts.blacklisted) ? (
+                  <DraftLabel plural />
+                ) : null}
+              </Labels>
             </>
           ) : null}
         </div>

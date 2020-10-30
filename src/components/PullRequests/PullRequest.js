@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import { parseISO, format } from 'date-fns';
 import ArrowLeftRoundedIcon from '@material-ui/icons/ArrowLeftRounded';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { useStyles } from './PullRequest.styles';
 import { Labels } from './Labels';
 import { useConfig } from '../ConfigController/ConfigController';
 import { BuildStatus } from './BuildStatus';
 import { Reviews } from './Reviews';
-import { Label } from './Label';
+import { DraftLabel } from '../DraftLabel';
 
 export const PullRequest = ({ pullRequest }) => {
   const styles = useStyles();
@@ -41,12 +40,7 @@ export const PullRequest = ({ pullRequest }) => {
               </p>
             </div>
 
-            {pullRequest.isDraft && (
-              <Label
-                label={{ name: 'draft', color: 'CBD5E0' }}
-                IconComponent={AccessTimeIcon}
-              />
-            )}
+            {pullRequest.isDraft && <DraftLabel />}
 
             <Labels
               labels={pullRequest.labels.nodes}

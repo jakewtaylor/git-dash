@@ -6,7 +6,7 @@ import { useStyles } from './PullRequests.styles';
 import { usePullRequests } from '../../hooks/queries/usePullRequests';
 
 export const PullRequests = () => {
-  const { selectedRepos, labels } = useConfig();
+  const { selectedRepos, labels, drafts } = useConfig();
   const styles = useStyles();
 
   const limit = selectedRepos.repos.length < 1 ? 10 : 100;
@@ -22,8 +22,15 @@ export const PullRequests = () => {
         : labels.whitelist.map((label) => `label:"${label.name}"`).join(' ')
       : '';
 
-    return `is:pr is:open ${repoQuery} ${labelQuery}`;
-  }, [selectedRepos.repos, labels]);
+    const draftQuery =
+      drafts.whitelisted && labels.filterMode === FilterModes.WHITELIST
+        ? 'is:draft'
+        : drafts.blacklisted && labels.filterMode === FilterModes.BLACKLIST
+        ? '-is:draft'
+        : '';
+
+    return `is:pr is:open ${repoQuery} ${labelQuery} ${draftQuery}`;
+  }, [selectedRepos.repos, labels, drafts]);
 
   const { loading, error, pullRequests } = usePullRequests(query, limit);
 
