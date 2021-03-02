@@ -17,11 +17,14 @@ const GET_PULL_REQUESTS = gql`
           author {
             login
             avatarUrl
+            url
           }
           repository {
             nameWithOwner
+            url
             owner {
               avatarUrl
+              url
             }
           }
           labels(first: 15) {
