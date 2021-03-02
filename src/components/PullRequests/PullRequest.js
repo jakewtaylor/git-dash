@@ -43,7 +43,7 @@ export const PullRequest = ({ pullRequest }) => {
               </a>
               <p className={styles.repo}>
                 <a
-                  href={pullRequest.permalink}
+                  href={pullRequest.repository.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
