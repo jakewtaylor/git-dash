@@ -30,13 +30,25 @@ export const PullRequest = ({ pullRequest }) => {
         <div>
           <div className={styles.preTitle}>
             <div className={styles.owner}>
-              <img
-                src={pullRequest.repository.owner.avatarUrl}
-                alt={pullRequest.repository.nameWithOwner}
-                className={styles.ownerAvatar}
-              />
+              <a
+                href={pullRequest.repository.owner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={pullRequest.repository.owner.avatarUrl}
+                  alt={pullRequest.repository.nameWithOwner}
+                  className={styles.ownerAvatar}
+                />
+              </a>
               <p className={styles.repo}>
-                {pullRequest.repository.nameWithOwner}
+                <a
+                  href={pullRequest.repository.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {pullRequest.repository.nameWithOwner}
+                </a>
               </p>
             </div>
 
@@ -97,14 +109,20 @@ export const PullRequest = ({ pullRequest }) => {
           </a>
         </div>
 
-        <div className={styles.author}>
-          <img
-            src={pullRequest.author.avatarUrl}
-            alt={pullRequest.author.login}
-            className={styles.authorAvatar}
-          />
-          <p className={styles.authorName}>{pullRequest.author.login}</p>
-        </div>
+        <a
+          href={pullRequest.author.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className={styles.author}>
+            <img
+              src={pullRequest.author.avatarUrl}
+              alt={pullRequest.author.login}
+              className={styles.authorAvatar}
+            />
+            <p className={styles.authorName}>{pullRequest.author.login}</p>
+          </div>
+        </a>
       </div>
 
       <p className={styles.branches}>
